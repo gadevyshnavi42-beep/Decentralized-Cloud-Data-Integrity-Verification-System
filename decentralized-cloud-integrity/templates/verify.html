@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Verify{% endblock %}
+{% block content %}
+<h3 class="mb-4">Data Integrity Verification</h3>
+<div class="row g-4">
+  <div class="col-lg-5"><div class="card p-4">
+    <label class="form-label">Stored file</label>
+    <select id="fileSelect" class="form-select mb-3"></select>
+    <label class="form-label">File to compare <span class="text-muted small">(optional — leave empty to re-check the stored copy)</span></label>
+    <input type="file" id="cmpFile" class="form-control mb-3">
+    <button id="verifyBtn" class="btn btn-primary rounded-pill mb-2 w-100">Verify Integrity</button>
+    <button id="decBtn" class="btn btn-outline-primary rounded-pill w-100">Run Simulated 3-Node Verification</button>
+    <div id="spinner" class="text-center mt-3 d-none"><div class="spinner-border text-primary"></div><div class="small text-muted">Verifying…</div></div>
+  </div></div>
+  <div class="col-lg-7"><div class="card p-4" id="result"><span class="text-muted">Results will appear here.</span></div></div>
+</div>
+{% endblock %}

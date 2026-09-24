@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero text-white text-center">
+  <div class="container py-5">
+    <h1 class="display-5 fw-bold">Decentralized Cloud Data Integrity Verification System</h1>
+    <p class="lead mx-auto" style="max-width:700px">Upload files, store their SHA-256 fingerprints, and prove later that they have not been modified or corrupted.</p>
+    <a class="btn btn-light btn-lg rounded-pill px-5" href="{{ url_for('dashboard' if session.user_id else 'register') }}">Get Started</a>
+  </div>
+</section>
+<div class="container py-5">
+  <div class="card p-4 mb-5">
+    <h4>What is data integrity verification?</h4>
+    <p class="mb-0">A cryptographic hash (SHA-256) turns any file into a unique fixed-length fingerprint. Change even one byte and the fingerprint changes completely. By comparing the stored hash with a freshly calculated one, we can tell whether a file is still exactly the same.</p>
+  </div>
+  <h3 class="text-center mb-4">Features</h3>
+  <div class="row g-4">
+    {% for icon, title, text in [
+      ('fingerprint','SHA-256 Hashing','Every upload gets a cryptographic fingerprint stored in the database.'),
+      ('shield-check','Integrity Verification','Compare stored and recalculated hashes to detect tampering.'),
+      ('diagram-3','Simulated 3-Node Network','Three simulated nodes check the file and vote on the result.'),
+      ('clock-history','Verification History','Every check is logged with a timestamp and result.'),
+      ('lock','Secure Handling','Hashed passwords, validated inputs, file size and type limits.'),
+      ('phone','Responsive Design','Works on desktop and mobile with Bootstrap 5.')] %}
+    <div class="col-md-6 col-lg-4"><div class="card h-100 p-4 text-center feature">
+      <i class="bi bi-{{ icon }} fs-1 text-primary"></i><h5 class="mt-2">{{ title }}</h5><p class="text-muted mb-0">{{ text }}</p>
+    </div></div>
+    {% endfor %}
+  </div>
+  <p class="text-center text-muted small mt-4">Note: the decentralized network is a <b>simulation</b>. It does not use a real blockchain or distributed cloud infrastructure.</p>
+</div>
+{% endblock %}
